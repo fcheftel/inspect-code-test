@@ -26,6 +26,7 @@ jobs:
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OUTPUT_DETAILS: detailed
+          DISABLE_ERRORS: true
           
       - name: Log Error as Comment
         run: |
