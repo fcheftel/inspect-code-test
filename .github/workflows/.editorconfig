@@ -1,71 +1,36 @@
 # EditorConfig is a standardized file format that defines coding styles and formatting
 # for different editors and IDEs. For more information, visit http://editorconfig.org
 
-# Top-most EditorConfig file
+###############################
+# Core EditorConfig Options   #
+###############################
 root = true
 
-# Default settings for all C# files
-[*.cs]
-charset = utf-8
-indent_style = space
+###############################
+# File Formatting Options     #
+###############################
+[**/*.cs]
+indent_style = tab
 indent_size = 4
-end_of_line = lf
-trim_trailing_whitespace = true
+charset = utf-8
+end_of_line = crlf
 insert_final_newline = true
+trim_trailing_whitespace = true
 
-# Allman style
-csharp_new_line_before_open_brace = true
+###############################
+# C# Formatting Rules         #
+###############################
+csharp_new_line_before_open_brace = all
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_method_call_parameter_list_parentheses = true
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_between_parentheses = control_flow_statements
+csharp_indent_case_contents = true
+dotnet_code_quality_unused_parameters = all
+csharp_indent_switch_labels = true
+csharp_prefer_braces = true : error
 
-# Public fields use PascalCase
-dotnet_naming_style.kind = PascalCase
-dotnet_naming_style.capitalization = PascalCase
-dotnet_naming_style.applicable_accessibilities = public
-dotnet_naming_style.required_modifiers = field
-dotnet_naming_style.required_suffix = ""
-
-# Protected and private fields use camelCase
-dotnet_naming_style.kind = camelCase
-dotnet_naming_style.capitalization = camelCase
-dotnet_naming_style.applicable_accessibilities = internal,private,protected
-dotnet_naming_style.required_modifiers = field
-dotnet_naming_style.required_suffix = ""
-
-# No underscore prefix for private fields
-csharp_style_require_field_privacy_prefix = false
-
-# All const use PascalCase
-dotnet_naming_style.const_kind = PascalCase
-dotnet_naming_style.const_capitalization = PascalCase
-dotnet_naming_style.const_required_modifiers = const
-
-# Public properties use PascalCase
-dotnet_naming_style.kind = PascalCase
-dotnet_naming_style.capitalization = PascalCase
-dotnet_naming_style.applicable_accessibilities = public
-dotnet_naming_style.required_modifiers = property
-dotnet_naming_style.required_suffix = ""
-
-# Protected and private properties use camelCase
-dotnet_naming_style.kind = camelCase
-dotnet_naming_style.capitalization = camelCase
-dotnet_naming_style.applicable_accessibilities = internal,private,protected
-dotnet_naming_style.required_modifiers = property
-dotnet_naming_style.required_suffix = ""
-
-# Public properties should only have private setters
-csharp_style_readonly_properties = true
-
-# Always use braces for if and switch/case statements (single lines are accepted)
-csharp_prefer_braces = always
-
-# Clean up and remove event listeners on disable or destroy
-# This can't be enforced through EditorConfig and must be part of your coding practices
-
-# Use 'var' for local variables to avoid repetition
-# This can't be enforced through EditorConfig and must be part of your coding practices
-
-# Always specify the access modifier for private members and methods
-# This can't be enforced through EditorConfig and must be part of your coding practices
-
-# Do not use 'this.variable = variable' to assign variables of the same name
-# This can't be enforced through EditorConfig and must be part of your coding practices
+###############################
+# .NET Naming Conventions     #
+###############################
