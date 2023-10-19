@@ -1,0 +1,50 @@
+# This workflow executes several linters on changed files based on languages used in your code base whenever
+# you push a code or open a pull request.
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/super-linter/super-linter
+name: Lint Code Base
+
+on:
+  pull_request:
+    branches:
+      - '**'
+jobs:
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+  
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        with:
+          editorconfig-path: .github/workflows/.editorconfig
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: "main"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINTER_RULES_PATH: /.github/workflows/
+          EDITORCONFIG_FILE_NAME: .editorconfig
+          VALIDATE_CSHARP: true
+          OUTPUT_DETAILS: detailed
+          DISABLE_ERRORS: true
+              
+#      - name: Log Error as Comment
+#        run: |
+#          # Parse linter output to extract error details
+#          # Construct a message with the error details
+#          error_message="Error message: <your_custom_error_message>"
+#          
+#          # Get the Pull Request number from the event payload
+#          pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+#          
+#          # Post a comment on the Pull Request
+#          curl -X POST \
+#          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+#          -d "{ \"body\": \"$error_message\" }" \
+#          "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$pr_number/comments"
