@@ -3,7 +3,7 @@
 #
 # You can adjust the behavior by modifying this file.
 # For more information, see:
-# https://github.com/github/super-linter
+# https://github.com/super-linter/super-linter
 name: Lint Code Base
 
 on:
@@ -28,6 +28,9 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINTER_RULES_PATH: /.github/workflows/
+          EDITORCONFIG_FILE_NAME: .editorconfig
+          VALIDATE_CSHARP: true
           OUTPUT_DETAILS: detailed
           DISABLE_ERRORS: true
               
