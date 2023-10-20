@@ -26,21 +26,15 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_CSHARP: true
           OUTPUT_DETAILS: detailed
+          VALIDATE_EDITORCONFIG: true
+          VALIDATE_CSHARP: true
           DISABLE_ERRORS: true
-              
-#      - name: Log Error as Comment
-#        run: |
-#          # Parse linter output to extract error details
-#          # Construct a message with the error details
-#          error_message="Error message: <your_custom_error_message>"
-#          
-#          # Get the Pull Request number from the event payload
-#          pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-#          
-#          # Post a comment on the Pull Request
-#          curl -X POST \
-#          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-#          -d "{ \"body\": \"$error_message\" }" \
-#          "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$pr_number/comments"
+
+      - name: Debug Super-Linter
+        run: |
+          echo "Validating C# formatting"
+          echo "Rules applied in .editorconfig:"
+          cat .editorconfig
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
