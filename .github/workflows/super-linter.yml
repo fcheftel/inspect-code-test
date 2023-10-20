@@ -30,3 +30,11 @@ jobs:
           VALIDATE_EDITORCONFIG: true
           VALIDATE_CSHARP: true
           DISABLE_ERRORS: true
+
+      - name: Debug Super-Linter
+        run: |
+          echo "Validating C# formatting"
+          echo "Rules applied in .editorconfig:"
+          cat .editorconfig
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
